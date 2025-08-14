@@ -1,4 +1,4 @@
-export const metaData = {
+﻿export const metaData = {
   baseUrl: "https://nextfolio-template.vercel.app/",
   title: "Shafeeq Sadiq",
   name: "Sirius",
@@ -14,4 +14,3 @@ export const socialLinks = {
   linkedin: "https://www.linkedin.com/in/shafeeq-sadiq/",
   email: "mailto:shafeeqsadiq2000@gmail.com",
 };
-s
