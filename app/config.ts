@@ -11,6 +11,7 @@ export const socialLinks = {
   twitter: "https://x.com/Shafeeq70375938",
   github: "https://github.com/shafeeqsadiq",
   instagram: "https://www.instagram.com/shafeeq.sadiq/",
-  linkedin: "https://www.linkedin.com/in/shafeeqsadiq",
+  linkedin: "https://www.linkedin.com/in/shafeeq-sadiq/",
   email: "mailto:shafeeqsadiq2000@gmail.com",
 };
+s
