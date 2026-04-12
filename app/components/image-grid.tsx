@@ -20,6 +20,10 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
     4: "grid-cols-2 sm:grid-cols-4",
   }[columns];
 
+  if (!images || !Array.isArray(images)) {
+    return null;
+  }
+
   return (
     <section>
       <div className={`grid ${gridClass} gap-4 my-8`}>
