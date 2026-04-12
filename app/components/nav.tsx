@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
   { name: "Projects", path: "/projects" },
   {
     name: "Resume",
-    path: "https://docs.google.com/document/d/13nXyEOaNnc3sddG7Vr1udnzwWlyMwV-N/edit?usp=sharing&ouid=115254755596298504348&rtpof=true&sd=true",
+    path: "https://drive.google.com/file/d/1I8TFLGdhJm4pbU1oJe7lUwggaHofYbA1/view",
     external: true,
   },
 ];
@@ -25,7 +25,7 @@ export function Navbar() {
     <nav className="lg:mb-16 mb-12 py-5">
       <div className="flex flex-col md:flex-row md:items-center justify-between">
         <div className="flex items-center">
-          <Link href="/" className="text-3xl font-semibold tracking-tight">
+          <Link href="/" className="text-3xl font-semibold tracking-tight underline decoration-wavy decoration-neutral-400 dark:decoration-neutral-500 underline-offset-8 decoration-2">
             {metaData.title}
           </Link>
         </div>
