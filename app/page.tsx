@@ -30,10 +30,10 @@ export default function Page() {
       </h1>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          I'm Shafeeq Sadiq. I work as an AI Software Engineer at <a href="https://www.mylearningtools.org/" target="_blank" rel="noopener noreferrer" className="text-yellow-600 dark:text-yellow-500 font-medium hover:underline">Resilience, Inc.</a> and I am a Master's graduate from the Computer Science program at Saint Louis University.
+          I'm Shafeeq Sadiq. I work as an AI Software Engineer at <a href="https://www.mylearningtools.org/" target="_blank" rel="noopener noreferrer" className="text-yellow-600 dark:text-yellow-500 font-medium hover:underline">Resilience, Inc.</a> and a Master's graduate from the Computer Science program at Saint Louis University.
         </p>
         <p>
-          I aim to build technology that solves real-world challenges.
+          I have a passion for building novel applications that solve real-world challenges.
         </p>
         <p className="leading-relaxed">
           My journey involves building full-stack applications using <TechBadge icon={SiTypescript} name="TypeScript" />, <TechBadge icon={SiPython} name="Python" />, <TechBadge icon={SiReact} name="React" />, <TechBadge icon={SiNodedotjs} name="Node.js" />, <TechBadge icon={SiJavascript} name="JavaScript" />, and <TechBadge icon={SiPostgresql} name="PostgreSQL" />, where I enjoy taking an idea from concept to a fully working product. I get excited about solving real problems through clean architecture and thoughtful design across the entire stack. I have also worked with major cloud technologies alongside my full-stack experience, deploying and integrating cloud services into the applications I build. Beyond that, I have explored computer vision through various projects, working with tools like <TechBadge icon={SiPytorch} name="PyTorch" />, <TechBadge icon={SiNumpy} name="NumPy" />, and <TechBadge icon={SiOpencv} name="OpenCV" /> to incorporate visual intelligence in my applications.
