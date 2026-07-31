@@ -72,30 +72,35 @@ function Callout(props) {
   );
 }
 
-function slugify(str) {
+function slugify(str: any) {
+  if (typeof str !== "string") {
+    if (Array.isArray(str)) {
+      str = str.map((s) => (typeof s === "string" ? s : "")).join("");
+    } else {
+      str = String(str || "");
+    }
+  }
   return str
-    .toString()
     .toLowerCase()
     .trim()
     .replace(/\s+/g, "-")
     .replace(/&/g, "-and-")
     .replace(/[^\w\-]+/g, "")
+    .replace(/[^\w\-]+/g, "")
     .replace(/\-\-+/g, "-");
 }
 
-function createHeading(level) {
-  const Heading = ({ children }) => {
+function createHeading(level: number) {
+  const Heading = ({ children }: { children: React.ReactNode }) => {
     let slug = slugify(children);
     return React.createElement(
       `h${level}`,
       { id: slug },
-      [
-        React.createElement("a", {
-          href: `#${slug}`,
-          key: `link-${slug}`,
-          className: "anchor",
-        }),
-      ],
+      React.createElement("a", {
+        href: `#${slug}`,
+        key: `link-${slug}`,
+        className: "anchor",
+      }),
       children
     );
   };
