@@ -30,8 +30,14 @@ function RoundedImage(props) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;
 }
 
-function Code({ children, ...props }) {
-  let codeHTML = highlight(children);
+function Code({ children, ...props }: any) {
+  let codeString =
+    typeof children === "string"
+      ? children
+      : Array.isArray(children)
+      ? children.map((c) => (typeof c === "string" ? c : "")).join("")
+      : String(children || "");
+  let codeHTML = highlight(codeString);
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
 }
 
@@ -127,15 +133,26 @@ let components = {
   Callout,
 };
 
-export function CustomMDX(props) {
+function getPlugin(plugin: any) {
+  if (typeof plugin === "function") return plugin;
+  if (plugin && typeof plugin.default === "function") return plugin.default;
+  if (plugin && plugin.default && typeof plugin.default.default === "function")
+    return plugin.default.default;
+  return plugin;
+}
+
+export function CustomMDX(props: any) {
+  const remarkPlugin = getPlugin(remarkMath);
+  const rehypePlugin = getPlugin(rehypeKatex);
+
   return (
     <MDXRemote
       {...props}
       components={{ ...components, ...(props.components || {}) }}
       options={{
         mdxOptions: {
-          remarkPlugins: [remarkMath],
-          rehypePlugins: [rehypeKatex],
+          remarkPlugins: [remarkPlugin],
+          rehypePlugins: [rehypePlugin],
         },
       }}
     />

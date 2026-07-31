@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  transpilePackages: ["next-mdx-remote", "remark-math", "rehype-katex", "katex"],
   async rewrites() {
     return [
       {

@@ -26,6 +26,13 @@ const TweetContent = async ({ id, components, onError }: TweetProps) => {
     return <NotFound error={error} />;
   }
 
+  if (tweet && tweet.entities) {
+    tweet.entities.hashtags = tweet.entities.hashtags || [];
+    tweet.entities.user_mentions = tweet.entities.user_mentions || [];
+    tweet.entities.urls = tweet.entities.urls || [];
+    tweet.entities.symbols = tweet.entities.symbols || [];
+  }
+
   return <EmbeddedTweet tweet={tweet} components={components} />;
 };
 
