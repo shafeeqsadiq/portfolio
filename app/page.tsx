@@ -30,7 +30,7 @@ export default function Page() {
       </h1>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          I'm Shafeeq Sadiq. I work as an AI Software Engineer at <a href="https://www.mylearningtools.org/" target="_blank" rel="noopener noreferrer" className="text-yellow-600 dark:text-yellow-500 font-medium hover:underline">Resilience, Inc.</a> and a Master's graduate from the Computer Science program at Saint Louis University.
+          I'm Shafeeq Sadiq. I work as an AI Engineer at <a href="https://www.mylearningtools.org/" target="_blank" rel="noopener noreferrer" className="text-yellow-600 dark:text-yellow-500 font-medium hover:underline">Resilience, Inc.</a> and a Master's graduate from the Computer Science program at Saint Louis University.
         </p>
         <p>
           I have a passion for building novel applications that solve real-world challenges.

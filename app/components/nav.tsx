@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
   { name: "Projects", path: "/projects" },
   {
     name: "Resume",
-    path: "https://drive.google.com/file/d/1lZ-FbRn1Xynp9z3bWM4YCOTodXhv51tS/view?usp=sharing",
+    path: "https://drive.google.com/file/d/1ANTU8ELVVrqGPI_3t8P-g8bjwPi0nR_c/view?usp=sharing",
     external: true,
   },
 ];

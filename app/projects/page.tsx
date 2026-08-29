@@ -9,6 +9,19 @@ export const metadata: Metadata = {
 // Featured Projects
 const featuredProjects = [
   {
+    title:
+      "TrackSLAM: Target Recognition, Autonomous Control & Kinematic SLAM",
+    description:
+      "An autonomous mobile robot featuring real-time 2D LiDAR SLAM, OpenCV visual tracking, and a C++ dual-loop PID follower, built with ROS 2 and Gazebo.",
+    url: "https://github.com/shafeeqsadiq/TrackSLAM",
+  },
+  {
+    title: "Multi-Agent Swarm Simulator",
+    description:
+      "A simulation platform where autonomous robots work together to complete tasks without central control.",
+    url: "https://github.com/shafeeqsadiq/Swarm-Simulator",
+  },
+  {
     title: "Patient Monitoring Dashboard",
     description:
       "A real-time patient monitoring system designed to track vital signs and predict potential health emergencies in elderly patients living alone.",
