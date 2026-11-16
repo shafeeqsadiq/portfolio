@@ -1,29 +1,66 @@
-# Shafeeq Portfolio V11
+# Shafeeq Sadiq — Portfolio
 
-Complete React/Vite portfolio based on **V10 Updated**. Earlier versions remain unchanged.
+My personal portfolio website showcasing my work in **Artificial Intelligence, Robotics, and Software Development**.
 
-## Change from V10 Updated
+The website features my robotics projects, software applications, technical skills, research interests, education, and professional experience.
 
-Removed **Kigali Amendment Tracker** and **Open Data Watchdog** from the software projects section. The software showcase now has five projects: Patient Monitoring Dashboard, AllergenScan AI, DataWatch, StreamFuse, and Microplastic Detection.
+## Tech Stack
 
-All other features, including TrackSLAM and Swarm Simulator videos, their local thumbnails/fallbacks, the dark portfolio theme, timeline, the interactive robot, and source attribution, remain unchanged.
+- **Frontend:** React, Vite, JavaScript
+- **Styling:** CSS
+- **Deployment:** Vercel
 
-## Local preview (Windows Git Bash)
+## Getting Started
 
-Extract this ZIP in `C:\Users\shafe\Desktop\Projects\ShafeeqPortfolio`, so that the new folder is `ShafeeqPortfolio/v11`. Then:
+### Prerequisites
+
+Ensure you have **Node.js** and **npm** installed on your computer.
+
+### 1. Clone the Repository
 
 ```bash
-cd ~/Desktop/Projects/ShafeeqPortfolio/v11
-npm ci
-npm run dev -- --port 5188 --strictPort
+git clone https://github.com/shafeeqsadiq/portfolio.git
+cd portfolio
 ```
 
-Open http://localhost:5188/. Run `npm run build` before publishing. If `npm ci` fails because of a dependency/lockfile problem, try `npm install`.
+### 2. Install Dependencies
 
-## Replace the existing Vercel portfolio
+```bash
+npm ci
+```
 
-See `DEPLOY-TO-VERCEL.md` for the full GitHub branch and Vercel deployment process. This is a Vite app and includes `vercel.json` with `dist` build output and SPA routing.
+### 3. Start the Development Server
 
-## Notes
+```bash
+npm run dev
+```
 
-The project uses media stored locally under `public/assets/`, including both robotics demonstration videos and their image fallback posters. As before, review permissions for upstream visual/design code before public deployment.
+Open **http://localhost:5173/** in your browser to view the website.
+
+## Production Build
+
+To generate an optimized production build:
+
+```bash
+npm run build
+```
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Live Website
+
+**Portfolio:** https://shafeeqsadiq.vercel.app/
+
+## Connect
+
+- **LinkedIn:** https://www.linkedin.com/in/shafeeq-sadiq/
+- **GitHub:** https://github.com/shafeeqsadiq
+- **Medium:** https://medium.com/@shafeeqsadiq
+
+---
+
+© Shafeeq Sadiq
