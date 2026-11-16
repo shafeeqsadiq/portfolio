@@ -1,35 +1,29 @@
-# **Portfolio Website**
+# Shafeeq Portfolio V11
 
-This is the repository for my personal portfolio website, showcasing my skills, projects, and experiences as a software developer.
+Complete React/Vite portfolio based on **V10 Updated**. Earlier versions remain unchanged.
 
-## **Features**
-- Responsive design for all devices.
-- Light and dark mode with a built-in theme switcher.
-- Dynamic sections for projects, blogs, and photos.
+## Change from V10 Updated
 
-## **Technologies Used**
-- **Framework**: Next.js  
-- **Styling**: Tailwind CSS  
-- **TypeScript**: For type safety  
-- **Icons**: React Icons  
-- **Hosting**: Vercel  
+Removed **Kigali Amendment Tracker** and **Open Data Watchdog** from the software projects section. The software showcase now has five projects: Patient Monitoring Dashboard, AllergenScan AI, DataWatch, StreamFuse, and Microplastic Detection.
 
-## **Getting Started**
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/shafeeqsadiq/portfolio.git
-   cd portfolio
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-4. Visit `http://localhost:3000` in your browser.
+All other features, including TrackSLAM and Swarm Simulator videos, their local thumbnails/fallbacks, the dark portfolio theme, timeline, the interactive robot, and source attribution, remain unchanged.
 
-## **Live Site**
-[shafeeqsadiq.vercel.app](https://shafeeqsadiq.vercel.app/)
+## Local preview (Windows Git Bash)
 
+Extract this ZIP in `C:\Users\shafe\Desktop\Projects\ShafeeqPortfolio`, so that the new folder is `ShafeeqPortfolio/v11`. Then:
+
+```bash
+cd ~/Desktop/Projects/ShafeeqPortfolio/v11
+npm ci
+npm run dev -- --port 5188 --strictPort
+```
+
+Open http://localhost:5188/. Run `npm run build` before publishing. If `npm ci` fails because of a dependency/lockfile problem, try `npm install`.
+
+## Replace the existing Vercel portfolio
+
+See `DEPLOY-TO-VERCEL.md` for the full GitHub branch and Vercel deployment process. This is a Vite app and includes `vercel.json` with `dist` build output and SPA routing.
+
+## Notes
+
+The project uses media stored locally under `public/assets/`, including both robotics demonstration videos and their image fallback posters. As before, review permissions for upstream visual/design code before public deployment.

@@ -1,0 +1,184 @@
+/* RobotHero uses local colors: change --hot to recolor the eyes and antenna. */
+.robot-hero { --panel:#141E20; --chalk:#F5F0E7; --hot:#F0B56F; --hot-wash:rgba(240,181,111,.12); --edge:rgba(245,240,231,.85); --ease:cubic-bezier(.16,1,.3,1); }
+.robot-hero .bot3d{--u:clamp(1px,.52vw,1.62px)}
+/* ═══════════════════════════════════════════════════════════════════
+   THE ROBOT IN 3D
+   Six-sided boxes on preserve-3d. Every face is a real plane, so it
+   genuinely turns rather than faking depth with a drawing, and it costs
+   nothing but CSS. Everything scales from the single unit --u.
+   ═══════════════════════════════════════════════════════════════════ */
+.robot-hero .bot3d {
+  --u: clamp(1px, .52vw, 1.62px);
+  --headW: calc(var(--u) * 116);
+  --headH: calc(var(--u) * 88);
+  --headD: calc(var(--u) * 82);
+  --bodyW: calc(var(--u) * 96);
+  --bodyH: calc(var(--u) * 78);
+  --bodyD: calc(var(--u) * 70);
+  --edge: rgba(245,240,231, .85);
+
+  position: relative;
+  width: 100%;
+  height: calc(var(--u) * 250);
+  display: grid;
+  place-items: start center;
+  perspective: calc(var(--u) * 900);
+}
+
+/* script.js writes --ry and --rx as the pointer moves */
+.robot-hero .b3-rig {
+  position: relative;
+  width: var(--headW);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, -6deg)) rotateY(var(--ry, -22deg));
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1);
+}
+
+.robot-hero .b3-box { position: relative; transform-style: preserve-3d; }
+.robot-hero .b3-f {
+  position: absolute;
+  inset: 0;
+  background: var(--panel);
+  border: 2px solid var(--edge);
+  border-radius: 6px;
+}
+
+/* ── head ───────────────────────────────────────────────────────── */
+.robot-hero .b3-head { width: var(--headW); height: var(--headH); margin-inline: auto; }
+.robot-hero .b3-head > .b3-front  { transform: translateZ(calc(var(--headD) / 2)); }
+.robot-hero .b3-head > .b3-back   { transform: rotateY(180deg) translateZ(calc(var(--headD) / 2)); }
+.robot-hero .b3-head > .b3-left,
+.robot-hero .b3-head > .b3-right  { width: var(--headD); left: calc((var(--headW) - var(--headD)) / 2); }
+.robot-hero .b3-head > .b3-left   { transform: rotateY(-90deg) translateZ(calc(var(--headW) / 2)); }
+.robot-hero .b3-head > .b3-right  { transform: rotateY(90deg) translateZ(calc(var(--headW) / 2)); }
+.robot-hero .b3-head > .b3-top,
+.robot-hero .b3-head > .b3-bottom { height: var(--headD); top: calc((var(--headH) - var(--headD)) / 2); }
+.robot-hero .b3-head > .b3-top    { transform: rotateX(90deg) translateZ(calc(var(--headH) / 2)); }
+.robot-hero .b3-head > .b3-bottom { transform: rotateX(-90deg) translateZ(calc(var(--headH) / 2)); }
+
+/* the face panel, inset like a screen in its bezel */
+.robot-hero .b3-screen {
+  position: absolute;
+  left: 12%;
+  top: 16%;
+  width: 76%;
+  height: 68%;
+  background: #090F10;
+  border-radius: 4px;
+}
+
+/* ── body ───────────────────────────────────────────────────────── */
+.robot-hero .b3-body {
+  width: var(--bodyW);
+  height: var(--bodyH);
+  margin: calc(var(--u) * 16) auto 0;
+}
+.robot-hero .b3-body > .b3-front  { transform: translateZ(calc(var(--bodyD) / 2)); }
+.robot-hero .b3-body > .b3-back   { transform: rotateY(180deg) translateZ(calc(var(--bodyD) / 2)); }
+.robot-hero .b3-body > .b3-left,
+.robot-hero .b3-body > .b3-right  { width: var(--bodyD); left: calc((var(--bodyW) - var(--bodyD)) / 2); }
+.robot-hero .b3-body > .b3-left   { transform: rotateY(-90deg) translateZ(calc(var(--bodyW) / 2)); }
+.robot-hero .b3-body > .b3-right  { transform: rotateY(90deg) translateZ(calc(var(--bodyW) / 2)); }
+.robot-hero .b3-body > .b3-top,
+.robot-hero .b3-body > .b3-bottom { height: var(--bodyD); top: calc((var(--bodyH) - var(--bodyD)) / 2); }
+.robot-hero .b3-body > .b3-top    { transform: rotateX(90deg) translateZ(calc(var(--bodyH) / 2)); }
+.robot-hero .b3-body > .b3-bottom { transform: rotateX(-90deg) translateZ(calc(var(--bodyH) / 2)); }
+
+.robot-hero .b3-chip {
+  position: absolute;
+  left: 26%;
+  top: 22%;
+  width: 48%;
+  height: 46%;
+  background: var(--hot-wash);
+  border: 2px solid var(--hot);
+  border-radius: 3px;
+}
+
+/* ── antenna, ears, neck, limbs ─────────────────────────────────── */
+.robot-hero .b3-antenna {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 2px;
+  height: calc(var(--u) * 26);
+  background: var(--edge);
+  transform: translateX(-50%);
+}
+.robot-hero .b3-bulb {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--u) * -10);
+  width: calc(var(--u) * 13);
+  height: calc(var(--u) * 13);
+  margin-left: calc(var(--u) * -6.5);
+  border-radius: 50%;
+  background: var(--hot);
+  box-shadow: 0 0 calc(var(--u) * 10) var(--hot);
+  animation: robot-beacon-pulse 2.6s ease-in-out infinite;
+}
+
+.robot-hero .b3-ear {
+  position: absolute;
+  top: calc(var(--u) * 26);
+  width: calc(var(--u) * 9);
+  height: calc(var(--u) * 34);
+  background: var(--panel);
+  border: 2px solid var(--edge);
+  border-radius: 3px;
+}
+.robot-hero .b3-ear-l { left: calc(var(--u) * -9); }
+.robot-hero .b3-ear-r { right: calc(var(--u) * -9); }
+
+.robot-hero .b3-neck {
+  position: absolute;
+  left: 50%;
+  top: var(--headH);
+  width: calc(var(--u) * 26);
+  height: calc(var(--u) * 16);
+  margin-left: calc(var(--u) * -13);
+  border-left: 2px solid var(--edge);
+  border-right: 2px solid var(--edge);
+}
+
+.robot-hero .b3-limb { position: absolute; background: var(--panel); border: 2px solid var(--edge); border-radius: 4px; }
+/* the rig is head-width but the arms hang off the BODY, which is narrower,
+   so they are inset by half the difference rather than sat at the edge */
+.robot-hero .b3-arm-l, .b3-arm-r { width: calc(var(--u) * 8); height: calc(var(--u) * 46); top: calc(var(--u) * 114); }
+.robot-hero .b3-arm-l { left: calc(var(--u) * 2); transform: rotate(6deg); }
+.robot-hero .b3-arm-r { right: calc(var(--u) * 2); transform: rotate(-6deg); }
+.robot-hero .b3-leg-l, .b3-leg-r { width: calc(var(--u) * 10); height: calc(var(--u) * 34); top: calc(var(--u) * 182); }
+.robot-hero .b3-leg-l { left: calc(var(--u) * 30); }
+.robot-hero .b3-leg-r { right: calc(var(--u) * 30); }
+
+/* it stands on something, rather than hovering */
+.robot-hero .b3-shadow {
+  position: absolute;
+  bottom: calc(var(--u) * 32);
+  left: 50%;
+  width: calc(var(--u) * 120);
+  height: 3px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent,
+              rgba(245,240,231, .3) 18%, rgba(245,240,231, .3) 82%, transparent);
+}
+
+/* The robot's size comes from --u, not from its container, so it has to be
+   stepped down explicitly on smaller screens or it bursts out of the slot. */
+@media (max-width: 1024px) { .bot3d { --u: 1.28px; } }
+@media (max-width: 720px)  { .bot3d { --u: 1.02px; } }
+
+
+@keyframes robot-beacon-pulse { 0%,100% { opacity: 1 } 50% { opacity: .35 } }
+@media(prefers-reduced-motion:reduce){.robot-hero .b3-rig{transition:none}.robot-hero .b3-bulb{animation:none}}
+
+/* Keep the robot itself interactive without introducing a card or altering V2 layout. */
+.robot-hero { display:block; cursor:pointer; background:none; border:0; padding:0; outline:none; }
+.robot-hero:focus-visible { outline: 2px solid var(--hot); outline-offset: 8px; border-radius: 12px; }
+.robot-hero .b3-rig { transform-origin:50% 48%; }
+.robot-hero .b3-screen { display:block; }
+@media (prefers-reduced-motion: reduce) {
+  .robot-hero .b3-rig { transition:none; }
+  .robot-hero .b3-bulb { animation:none; }
+}

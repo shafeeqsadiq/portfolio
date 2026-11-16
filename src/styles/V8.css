@@ -1,0 +1,151 @@
+/* V8 — actual month-mapped timeline. All ticks, spans, markers and animated
+   progress use the same 2018 → current-year linear calendar coordinate system. */
+.v8-journey .v8-map {overflow:hidden;}
+.v8-journey .v8-scroller {overflow-x:auto; overflow-y:hidden; scrollbar-width:thin;}
+.v8-journey .v8-map-body {
+  min-width:0; width:100%;
+  display:flex; flex-direction:column;
+  gap:0;
+  padding:40px 35px 34px;
+  background-color:#0d0d10;
+  background-image:radial-gradient(circle,rgba(184,183,194,.18) .75px,transparent 1px);
+  background-size:21px 21px;
+}
+.v8-journey .v8-axis-row,
+.v8-journey .v8-education-row,
+.v8-journey .v8-milestone-row {
+  display:grid;
+  grid-template-columns:110px minmax(0,1fr);
+  align-items:center;
+}
+.v8-journey .v8-axis-label {
+  color:#a1a1ae;
+  font:500 10px/1.6 'IBM Plex Mono',Consolas,monospace;
+  letter-spacing:.05em;
+}
+.v8-journey .v8-axis-label span {display:block;}
+.v8-journey .v8-axis {position:relative;height:34px; margin-right:0;}
+.v8-journey .v8-year-tick {
+  position:absolute;top:0;transform:translateX(-50%);
+  color:#a7a6b0;white-space:nowrap;
+  font:500 10px/1.2 'IBM Plex Mono',Consolas,monospace;
+  letter-spacing:.02em;
+}
+.v8-journey .v8-year-tick.is-first {transform:none;}
+.v8-journey .v8-year-tick.is-present {transform:translateX(-100%);color:#d0c6e9;}
+.v8-journey .v8-education-row {align-items:center;}
+.v8-journey .v8-education-area {position:relative;height:125px;}
+.v8-journey .v8-education-period {
+  position:absolute;top:8px;left:var(--period-start);width:var(--period-width);height:104px;
+}
+.v8-journey .v8-duration-line {
+  position:absolute;bottom:3px;left:0;right:0;height:3px;background:#9692a0;
+  opacity:.8;pointer-events:none;
+}
+.v8-journey .v8-education-period:has(.is-selected) .v8-duration-line {background:#e38e71;}
+.v8-journey .v8-education-card {
+  border:1px solid #424047;border-left:3px solid #8d879b;
+  background:#1a191d;border-radius:2px;color:#ededf0;
+  height:85px;width:100%;min-width:0;
+  display:flex;align-items:center;gap:12px;
+  padding:12px 14px;text-align:left;cursor:pointer;
+  transition:background .3s,border-color .3s;
+}
+.v8-journey .v8-education-card:hover {background:#242129;border-color:#9c819b;}
+.v8-journey .v8-education-card.is-selected {background:#291c1d;border-color:#e8754f;}
+.v8-journey .v8-card-logo {
+  display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;
+  border-radius:3px;background:#fff;padding:5px;overflow:hidden;
+}
+.v8-journey .v8-card-logo img {display:block;width:100%;height:100%;object-fit:contain;}
+.v8-journey .v8-card-copy {min-width:0;display:flex;flex-direction:column;gap:5px;}
+.v8-journey .v8-card-copy strong {font:600 13px/1.25 Inter,Arial,sans-serif;color:#f5f4f7;}
+.v8-journey .v8-card-copy small {font:500 10px/1.6 'IBM Plex Mono',Consolas,monospace;color:#bdb9c5;}
+.v8-journey .v8-milestone-row {margin-top:28px;align-items:start;}
+.v8-journey .v8-milestone-row>.v8-axis-label {padding-top:52px;}
+.v8-journey .v8-timeline {height:380px;position:relative;}
+.v8-journey .v8-timeline-base,
+.v8-journey .v8-timeline-progress {
+  position:absolute;z-index:0;top:55px;left:0;height:3px;pointer-events:none;
+}
+.v8-journey .v8-timeline-base {right:0;background:#4b4954;}
+.v8-journey .v8-timeline-progress {
+  width:var(--progress-end);background:#ef744e;
+  box-shadow:0 0 12px rgba(239,116,78,.24);
+  transition:width 1600ms cubic-bezier(.2,.85,.24,1);
+}
+.v8-journey .v8-event {position:absolute;top:0;width:0;height:100%;z-index:2;}
+.v8-journey .v8-event-button {
+  position:absolute;left:0;top:25px;transform:translateX(-50%);
+  display:flex;align-items:center;flex-direction:column;
+  width:155px;min-width:155px;text-align:center;
+  border:0;background:transparent;color:#e7e7e9;
+  padding:0;cursor:pointer;
+}
+.v8-journey .v8-event.is-offset .v8-event-button {top:205px;}
+.v8-journey .v8-event-stem {
+  position:absolute;left:0;top:55px;height:180px;width:1px;
+  background:#77717d;transform:translateX(-50%);z-index:-1;
+}
+.v8-journey .v8-event-stem::before {
+  content:'';position:absolute;width:7px;height:7px;border-radius:50%;
+  background:#d3cadb;left:50%;top:-2px;transform:translate(-50%,-50%);
+}
+.v8-journey .v8-event-stem.is-active {background:#ef744e;}
+.v8-journey .v8-event-stem.is-active::before {background:#ef744e;}
+.v8-journey .v8-badge {
+  position:relative;isolation:isolate;display:grid;place-items:center;
+  width:60px;height:60px;box-sizing:border-box;
+  border:1.5px solid #96939e;background:#fff;
+  border-radius:50%;padding:9px;flex:none;
+  transition:border-color .3s,box-shadow .3s,transform .3s;
+}
+.v8-journey .v8-badge img {display:block;width:100%;height:100%;object-fit:contain;object-position:center;}
+.v8-journey .v8-event-button:hover .v8-badge {transform:translateY(-3px);border-color:#f2ab92;}
+.v8-journey .v8-event-button.is-selected .v8-badge {border:2px solid #ef744e;box-shadow:0 0 0 3px rgba(239,116,78,.12);}
+.v8-journey .v8-event-button.is-selected .v8-badge::after {
+  content:'';position:absolute;top:50%;left:50%;
+  width:71px;height:71px;border:1.5px solid #ef744e;
+  transform:translate(-50%,-50%) rotate(45deg);
+  pointer-events:none;
+}
+.v8-journey .v8-event-title {
+  margin-top:47px;white-space:normal;overflow-wrap:normal;
+  font:600 12px/1.45 'IBM Plex Mono',Consolas,monospace;color:#e7e7eb;
+}
+/* SLU graduation and Resilience start are only three months apart. Keep
+   both at their exact x positions, but put the SLU caption above its badge,
+   avoiding collision with the later experience marker and stem. */
+.v8-journey .v8-event-slu .v8-event-title,
+.v8-journey .v8-event-slu .v8-event-year {
+  position:absolute;left:50%;transform:translateX(-50%);margin:0;
+  text-align:center;white-space:nowrap;
+}
+.v8-journey .v8-event-slu .v8-event-title {top:-47px;width:230px;}
+.v8-journey .v8-event-slu .v8-event-year {top:-27px;width:95px;}
+.v8-journey .v8-event-year {
+  margin-top:7px;font:500 11px/1.35 'IBM Plex Mono',Consolas,monospace;color:#aaa9b0;
+}
+.v8-journey .v8-event-button.is-selected .v8-event-title,
+.v8-journey .v8-event-button.is-selected .v8-event-year {color:#ef744e;}
+.v8-journey button:focus-visible {outline:2px solid #ef744e;outline-offset:4px;}
+.v8-journey .v8-map-footer {display:flex;justify-content:space-between;gap:12px;align-items:center;}
+.v8-journey .v8-swipe-hint {display:none;}
+@media(max-width:1100px) {
+  .v8-journey .v8-map-body {min-width:1280px;padding:32px 30px 20px;}
+  .v8-journey .v8-swipe-hint {
+    display:block;margin:0;background:#151517;
+    color:#ada7b9;border-top:1px solid #292830;text-align:right;
+    padding:10px 18px;font:500 10px/1.4 'IBM Plex Mono',Consolas,monospace;
+  }
+}
+@media(max-width:680px) {
+  .v8-journey .v8-map-top {padding:15px;}
+  .v8-journey .v8-map-footer {padding:12px 14px;flex-wrap:wrap;}
+  .v8-journey .v6-selected-label {display:block;font-size:9px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .v8-journey .v8-timeline-progress,
+  .v8-journey .v8-badge,
+  .v8-journey .v8-education-card {transition:none!important;}
+}

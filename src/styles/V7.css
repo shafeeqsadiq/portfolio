@@ -1,0 +1,179 @@
+/* V7 fine-tuning only — the original dark V5/V6 aesthetic is preserved. */
+
+/* Alignment: year labels, cards and logo milestones use the SAME 3-column grid.
+   Columns represent the three CV milestones, not evenly-spaced calendar years. */
+.v7-journey .v7-map-body {
+  min-width: 900px;
+  padding: 34px 28px 31px;
+}
+.v7-journey .v7-year-row,
+.v7-journey .v7-education-row,
+.v7-journey .v7-milestone-row {
+  display:grid;
+  grid-template-columns: 125px minmax(0, 1fr);
+  align-items:center;
+}
+.v7-journey .v7-grid-label {
+  color:#9898A3;
+  font: 500 10px/1.6 'IBM Plex Mono',Consolas,monospace;
+  letter-spacing:.035em;
+}
+.v7-journey .v7-grid-label span {display:block;}
+.v7-journey .v7-year-grid,
+.v7-journey .v7-education-grid,
+.v7-journey .v7-milestone-track {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.v7-journey .v7-year-grid { padding:0 0 27px; }
+.v7-journey .v7-year {
+  justify-self:stretch;
+  border:0;
+  border-radius:2px;
+  padding:8px 10px;
+  cursor:pointer;
+  background:transparent;
+  color:#A7A7AF;
+  font:500 11px/1.2 'IBM Plex Mono',Consolas,monospace;
+  letter-spacing:.045em;
+  text-align:center;
+  transition:color .25s,background .25s;
+}
+.v7-journey .v7-year.is-selected {color:#F08A68;}
+.v7-journey .v7-year:hover {color:#fff;}
+.v7-journey button:focus-visible {outline:2px solid #EF744E;outline-offset:3px;}
+
+/* The education cards sit above their matching milestones; no mismatched widths. */
+.v7-journey .v7-education-grid {gap:14px;align-items:stretch;}
+.v7-journey .v7-education-card {
+  min-height:78px;
+  display:flex;
+  padding:11px 12px;
+  gap:10px;
+  align-items:center;
+  min-width:0;
+}
+.v7-journey .v7-education-card .v6-bar-logo {
+  flex:0 0 42px;
+  width:42px;height:42px;
+  padding:6px;
+}
+.v7-journey .v7-education-card .v6-bar-copy strong {font-size:12px;line-height:1.4;}
+.v7-journey .v7-education-card .v6-bar-copy small {font-size:10px;line-height:1.5;}
+.v7-journey .v7-milestone-row { margin-top:32px; }
+.v7-journey .v7-milestone-track {
+  min-height:198px;
+  position:relative;
+  align-items:start;
+  --timeline-progress:83.3333%;
+}
+.v7-journey .v7-track-line,
+.v7-journey .v7-track-progress {
+  position:absolute;
+  z-index:0;
+  left:0;
+  top:39px;
+  height:3px;
+  pointer-events:none;
+}
+.v7-journey .v7-track-line {right:0;background:#45434D;}
+.v7-journey .v7-track-progress {
+  width:var(--timeline-progress);
+  background:#EF744E;
+  box-shadow:0 0 12px rgba(239,116,78,.15);
+  transition:width 720ms cubic-bezier(.22,.8,.22,1);
+}
+.v7-journey .v7-milestone {
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  min-width:0;
+  border:0;
+  background:transparent;
+  padding:10px 5px 0;
+  color:#EAE9EB;
+  text-align:center;
+  cursor:pointer;
+}
+.v7-journey .v7-milestone-badge {
+  position:relative;
+  isolation:isolate;
+  display:grid;
+  place-items:center;
+  width:60px;
+  height:60px;
+  padding:9px;
+  flex:none;
+  box-sizing:border-box;
+  border-radius:50%;
+  border:1.5px solid #74737E;
+  background:#fff;
+  transition:border-color .28s,transform .28s,box-shadow .28s;
+}
+.v7-journey .v7-milestone-badge img {
+  display:block;
+  width:100%;height:100%;
+  max-width:100%;max-height:100%;
+  object-fit:contain;
+  object-position:center;
+}
+.v7-journey .v7-milestone:hover .v7-milestone-badge {transform:translateY(-2px);border-color:#F3C3B3;}
+.v7-journey .v7-milestone.is-selected .v7-milestone-badge {border:2px solid #EF744E;box-shadow:0 0 0 3px rgba(239,116,78,.1);}
+.v7-journey .v7-milestone.is-selected .v7-milestone-badge::before {
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  width:72px;height:72px;
+  border:1.5px solid #EF744E;
+  transform:translate(-50%,-50%) rotate(45deg);
+  pointer-events:none;
+  box-sizing:border-box;
+}
+.v7-journey .v7-milestone-name {
+  display:block;
+  margin-top:43px;
+  color:#E7E6EB;
+  font:550 12px/1.45 'IBM Plex Mono',Consolas,monospace;
+  overflow-wrap:anywhere;
+}
+.v7-journey .v7-milestone-year {
+  margin-top:7px;
+  color:#AAA9B0;
+  font:500 11px/1.4 'IBM Plex Mono',Consolas,monospace;
+}
+.v7-journey .v7-milestone.is-selected .v7-milestone-name,
+.v7-journey .v7-milestone.is-selected .v7-milestone-year { color:#EF744E; }
+
+/* Robot stays right of skills, full-size, now visually integrated into the page. */
+.v6v2-skills .v6v2-robot-pane {
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  padding:30px 12px 22px;
+}
+.v6v2-skills .v6v2-robot-stage {background:transparent;border:0;}
+
+.v7-journey .v7-scroll-hint {display:none;}
+@media(max-width:760px) {
+  .v7-journey .v7-map-body {min-width:820px;}
+  .v7-journey .v7-scroll-hint {
+    display:block;background:#151517;color:#A8A7B1;
+    border-top:1px solid #282830;padding:9px 15px;
+    font:500 9px/1.35 'IBM Plex Mono',Consolas,monospace;
+    letter-spacing:.08em;text-align:right;
+  }
+}
+@media(max-width:680px) {
+  .v7-journey .v7-map-body {min-width:800px;padding:25px 18px 22px;}
+  .v7-journey .v7-year-grid {padding-bottom:20px;}
+  .v7-journey .v7-milestone-row {margin-top:26px;}
+  .v7-journey .v7-milestone-track {min-height:180px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .v7-journey .v7-track-progress,
+  .v7-journey .v7-milestone-badge,
+  .v7-journey .v7-year {transition:none;}
+}
