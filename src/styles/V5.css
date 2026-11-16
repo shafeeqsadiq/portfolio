@@ -57,7 +57,7 @@ body, .v5-app.App, .v5-app * { font-family: "Inter", Arial, sans-serif; }
 .v5-intro-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) 255px; gap:clamp(40px,6.5vw,100px); align-items:center; }
 .v5-intro-copy { min-width:0; }
 .v5-overline { color:#A4A4AB; font-size:12px; letter-spacing:.11em; font-weight:500; margin:0 0 40px; }
-.v5-hero-name { margin:0; font:700 clamp(51px,6vw,83px)/1.1 "Inter",Arial,sans-serif !important; letter-spacing:-.066em; color:#F9F9FA; }
+.v5-hero-name { margin:0 0 clamp(24px,2.5vw,36px); font:700 clamp(51px,6vw,83px)/1.1 "Inter",Arial,sans-serif !important; letter-spacing:-.066em; color:#F9F9FA; }
 .v5-hero-typed { display:inline; }
 .v5-name-cursor { display:inline-block; color:#B9A5F4; font-weight:400; margin-left:4px; animation:v5-blink 1s steps(1) infinite; }
 @keyframes v5-blink { 0%,47%{opacity:1} 48%,100%{opacity:0} }
