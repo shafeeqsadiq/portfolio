@@ -24,9 +24,9 @@ const RobotFace = (function (global) {
   var TALK_FREQ = 10.0;
   var TALK_AMPLITUDE = 0.10;
 
-  var LOOK_LERP = 0.05;
+  var LOOK_LERP = 0.12;
   var LOOK_RANGE_X = 0.55;
-  var LOOK_RANGE_Y = 0.35;
+  var LOOK_RANGE_Y = 0.70;
   var LOOK_HOLD_MIN = 2.0, LOOK_HOLD_MAX = 5.0;
 
   var SHAKE_DURATION = 0.5;
