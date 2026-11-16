@@ -156,8 +156,10 @@ body, .v5-app.App, .v5-app * { font-family: "Inter", Arial, sans-serif; }
 
 /* Dedicated robotics project pages */
 .v5-detail-page { max-width:940px; padding:165px 32px 100px; margin:0 auto; }
-.v5-detail-page .v5-detail-back { display:inline-block; margin-bottom:45px; font-size:13px; color:#C4C4CC; border-bottom:1px solid #414148; padding-bottom:4px; }
-.v5-detail-page h1 { margin:12px 0 18px; font-size:clamp(43px,6vw,68px); letter-spacing:-.06em; font-weight:670; }
+/* Keep the return link and project label on separate, readable rows. */
+.v5-detail-page .v5-detail-back { display:block; width:fit-content; margin-bottom:30px; font-size:13px; color:#C4C4CC; border-bottom:1px solid #414148; padding-bottom:4px; }
+.v5-detail-page > .v5-section-kicker { display:block; width:fit-content; margin-bottom:12px; }
+.v5-detail-page h1 { margin:0 0 18px; font-size:clamp(43px,6vw,68px); letter-spacing:-.06em; font-weight:670; }
 .v5-detail-summary { color:#B4B4BA; max-width:720px; font-size:17px; line-height:1.8; margin-bottom:32px; }
 .v5-detail-media { border:1px solid #303036; border-radius:11px; overflow:hidden; background:#0A0A0A; }
 .v5-detail-media .project-media { background:#0A0A0A; border-radius:0; }
