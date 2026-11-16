@@ -1,0 +1,15 @@
+/* V5 — near-black, white and neutral greys; restrained lavender as a single interaction accent. */
+:root {
+  --dark-navy: #080808;
+  --navy: #0A0A0A;
+  --light-navy: #151515;
+  --lightest-navy: #282828;
+  --navy-shadow: rgba(8,8,8,.78);
+  --slate: #9B9B9F;
+  --light-slate: #C2C2C5;
+  --lightest-slate: #ECECEC;
+  --white: #F7F7F7;
+  --green-bright: #B9A5F4;
+  --green-tint: rgba(185,165,244,.09);
+  --yellow: #B9A5F4;
+}

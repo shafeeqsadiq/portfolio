@@ -1,0 +1,4 @@
+html { box-sizing:border-box; overflow-x:hidden; }
+*,*::before,*::after { box-sizing:inherit; }
+body { margin:0; width:100%; min-height:100vh; background:#090909; color:#F5F5F5; font-family:Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+code { font-family:"IBM Plex Mono",Consolas,monospace; }

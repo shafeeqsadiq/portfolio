@@ -1,0 +1,191 @@
+/* V6 v2 visual patch: preserve the original V5 dark/lavender page and modernize
+   only the interactive education/experience map and two-column skills + robot. */
+
+/* The timeline is an inset black technical diagram, not a light-coloured page. */
+.v6v2-journey .v6-map {
+  --road-ink:#E6E6E9;
+  --road-muted:#9898A1;
+  --road-accent:#EF744E;
+  --road-sage:#8F8F98;
+  --road-border:#34343B;
+  border:1px solid #36363C;
+  background:#0D0D10;
+  color:#E6E6EA;
+  border-radius:3px;
+  box-shadow:none;
+}
+.v6v2-journey .v6-map-top,
+.v6v2-journey .v6-map-footer {
+  background:#151517;
+  border-color:#303037;
+  color:#E9E9EB;
+}
+.v6v2-journey .v6-map-top { padding:20px 24px; font-size:12px; }
+.v6v2-journey .v6-map-top > span:last-child { color:#9B9AA2; font-size:11px; }
+.v6v2-journey .v6-map-body {
+  min-width:840px;
+  padding:40px 27px 32px;
+  background-color:#0D0D10;
+  background-image:radial-gradient(circle,rgba(187,187,193,.2) .8px,transparent 1px);
+  background-size:20px 20px;
+}
+.v6v2-journey .v6-map-scroller { scrollbar-color:#45454C #121216; }
+.v6v2-journey .v6-map-ticks {
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  margin:0 0 35px 120px;
+  color:#9696A0;
+  font-size:10px;
+}
+.v6v2-journey .v6-map-plot { grid-template-columns:120px minmax(0,1fr); gap:38px 0; }
+.v6v2-journey .v6-row-label { color:#A4A3AF; font-size:10px; line-height:1.7; }
+.v6v2-journey .v6-row-label span { font-size:10px; }
+.v6v2-journey .v6-education-track { gap:13px; }
+.v6v2-journey .v6-education-bar {
+  background:#17171A;
+  border:1px solid #3C3B43;
+  border-left:4px solid #77727F;
+  min-height:88px;
+  padding:12px;
+  color:#ECECEF;
+  gap:13px;
+  transition:background .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.v6v2-journey .v6-education-bar:hover { background:#212126; border-color:#6D6474; }
+.v6v2-journey .v6-education-bar.is-selected {
+  background:#291C1B;
+  border-color:#A95540;
+  border-left-color:var(--road-accent);
+  box-shadow:inset 0 0 0 1px rgba(239,116,78,.06);
+}
+.v6v2-journey .v6-bar-logo {
+  display:grid;place-items:center; flex:none;
+  height:55px;width:55px;padding:5px;
+  border:1px solid #E2E0DE; background:#FFF;
+  border-radius:3px; overflow:hidden;
+}
+.v6v2-journey .v6-bar-logo img { display:block;object-fit:contain;max-width:100%;max-height:100%;width:100%;height:100%; }
+.v6v2-journey .v6-bar-copy strong { color:#F4F3F5; font-size:12px; }
+.v6v2-journey .v6-bar-copy small { color:#B8B3BC; font-size:10px; }
+.v6v2-journey .v6-education-bar.is-selected .v6-bar-copy small { color:#E7B5A3; }
+.v6v2-journey .v6-nodes-track { min-height:198px; }
+.v6v2-journey .v6-nodes-line,
+.v6v2-journey .v6-nodes-progress { top:44px;height:4px; }
+.v6v2-journey .v6-nodes-line { background:#43434B; }
+.v6v2-journey .v6-nodes-progress {
+  width:var(--timeline-progress);
+  background:var(--road-accent);
+  transition:width .72s cubic-bezier(.2,.85,.22,1);
+  will-change:width;
+  box-shadow:0 0 12px rgba(239,116,78,.2);
+}
+.v6v2-journey .v6-timeline-node { padding:0 5px; align-self:start; }
+.v6v2-journey .v6-node-medallion {
+  width:88px;height:88px;flex:none;
+  padding:10px;border:1.5px solid #6C6C76;
+  border-radius:50%;background:#FAFAFA;
+  position:relative;isolation:isolate;
+  transition:border-color .25s,box-shadow .25s,transform .25s;
+}
+.v6v2-journey .v6-node-medallion img {
+  object-fit:contain;object-position:center;
+  width:100%;height:100%;max-width:100%;max-height:100%;
+  border-radius:0;display:block;
+}
+.v6v2-journey .v6-timeline-node:hover .v6-node-medallion { border-color:#CCC5CF;transform:translateY(-2px); }
+.v6v2-journey .v6-timeline-node.is-selected .v6-node-medallion {
+  border-color:var(--road-accent);border-width:2px;
+  box-shadow:0 0 0 4px rgba(239,116,78,.09);
+}
+/* The diamond is deliberately constrained above the text; it does not overlap labels. */
+.v6v2-journey .v6-timeline-node.is-selected .v6-node-medallion::before {
+  content:"";position:absolute;inset:-5px;
+  width:96px;height:96px;left:50%;top:50%;
+  border:1.5px solid var(--road-accent);
+  transform:translate(-50%,-50%) rotate(45deg);
+  pointer-events:none;opacity:1; box-sizing:border-box;
+}
+.v6v2-journey .v6-timeline-node.is-selected .v6-node-medallion::after { content:none; }
+.v6v2-journey .v6-node-title {
+  margin-top:44px;
+  font:550 13px/1.4 'IBM Plex Mono',Consolas,monospace;
+  color:#E7E6E9;
+}
+.v6v2-journey .v6-node-period {
+  margin-top:7px;
+  font:500 11px/1.5 'IBM Plex Mono',Consolas,monospace;
+  color:#AAAAAF;
+}
+.v6v2-journey .v6-timeline-node.is-selected .v6-node-title,
+.v6v2-journey .v6-timeline-node.is-selected .v6-node-period { color:var(--road-accent); }
+.v6v2-journey .v6-map-footer {min-height:52px; padding:15px 24px;font-size:10px; }
+.v6v2-journey .v6-legend-line { background:#77727D; }
+.v6v2-journey .v6-legend-dot { border-color:#898993; }
+.v6v2-journey .v6-map-legend { color:#9999A2; }
+.v6v2-journey .v6-selected-label { color:var(--road-accent); }
+/* No chapter card is rendered under the roadmap. */
+
+/* The toolkit takes the left half; the existing interactive robot fills the right. */
+.v6v2-skills .v6v2-skills-grid {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  align-items:stretch;
+  gap:clamp(28px,4.6vw,80px);
+}
+.v6v2-skills .v6v2-skills-left { min-width:0; }
+.v6v2-skills .v6v2-skills-heading h2 {
+  color:#F5F5F7;letter-spacing:-.056em;line-height:1.12;
+  font-size:clamp(37px,4.8vw,58px);font-weight:650;margin:0 0 16px;
+}
+.v6v2-skills .v6v2-skills-heading p { color:#AAAAB1; font-size:14px; line-height:1.8; margin:0 0 25px; }
+.v6v2-skills .v6-skill-row {
+  display:block; padding:25px 0 26px;
+  border-bottom:1px solid #2E2D34;
+}
+.v6v2-skills .v6-skill-label { margin-bottom:16px; gap:13px; }
+.v6v2-skills .v6-skill-label h3 { font-size:15px; }
+.v6v2-skills .v6-skill-tags { gap:8px; }
+.v6v2-skills .v6-skill-pill { font-size:11px; padding:9px 11px; }
+.v6v2-skills .v6v2-robot-pane {
+  min-width:0; display:flex; flex-direction:column;
+  align-items:center;justify-content:space-between;
+  padding:30px 12px 22px;
+  border:1px solid #2E2D35;
+  border-radius:8px;
+  background:radial-gradient(ellipse at 52% 40%,rgba(185,165,244,.09),transparent 65%), #111114;
+}
+.v6v2-skills .v6v2-robot-eyebrow,
+.v6v2-skills .v6v2-robot-hint {
+  color:#AAA1BE;font:500 10px/1.5 'IBM Plex Mono',Consolas,monospace;
+  letter-spacing:.06em;text-align:center;
+}
+.v6v2-skills .v6v2-robot-eyebrow { align-self:flex-start; margin-left:16px; text-align:left; }
+.v6v2-skills .v6v2-robot-hint { color:#92929C; }
+.v6v2-skills .v6v2-robot-stage {
+  flex:1;min-height:455px;width:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+.v6v2-skills .v6v2-robot-stage .hero-bot { width:min(100%,420px);display:flex;justify-content:center; }
+.v6v2-skills .v6v2-robot-stage .robot-hero .bot3d { --u:1.72px; height:calc(var(--u)*250); }
+.v6v2-skills .v6v2-robot-stage .b3-shadow { bottom:calc(var(--u)*16); }
+@media(max-width:1050px) {
+  .v6v2-skills .v6v2-skills-grid { gap:25px; }
+  .v6v2-skills .v6v2-robot-stage .robot-hero .bot3d { --u:1.45px; }
+  .v6v2-journey .v6-map-body { min-width:840px; }
+}
+@media(max-width:760px) {
+  .v6v2-skills .v6v2-skills-grid { grid-template-columns:1fr; gap:30px; }
+  .v6v2-skills .v6v2-robot-pane { min-height:440px; }
+  .v6v2-skills .v6v2-robot-stage {min-height:360px;}
+  .v6v2-skills .v6v2-robot-stage .robot-hero .bot3d { --u:1.42px; }
+}
+@media(max-width:680px) {
+  .v6v2-journey .v6-map-top { padding:16px; }
+  .v6v2-journey .v6-map-footer { padding:13px 16px; }
+  .v6v2-journey .v6-map-body {padding:32px 20px 28px;}
+  .v6v2-journey .v6-selected-label {display:block;font-size:9px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .v6v2-journey .v6-nodes-progress,
+  .v6v2-journey .v6-node-medallion,
+  .v6v2-journey .v6-education-bar { transition:none; }
+}

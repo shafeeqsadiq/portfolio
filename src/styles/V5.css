@@ -1,0 +1,231 @@
+/* SHAFEEQ SADIQ — PORTFOLIO V5
+   Minimal engineering journal. Black, white, silver and quiet lavender.
+   Intentional styles override the earlier Gazi-derived visual system. */
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; }
+body, #root, .v5-app, .v5-app.App { background: #090909 !important; color:#F5F5F5; }
+body, .v5-app.App, .v5-app * { font-family: "Inter", Arial, sans-serif; }
+.v5-app.App { display:block; width:100%; padding:0; min-height:100vh; }
+.v5-app #content { width:100%; padding:0; }
+.v5-app a { color:inherit; text-decoration:none; }
+.v5-app a:hover { color:#fff; }
+.v5-app ::selection { background:rgba(185,165,244,.35); color:white; }
+.v5-app [id] { scroll-margin-top:110px; }
+.v5-app .reading-progress { background:rgba(255,255,255,.08); }
+.v5-app .reading-progress span { background:#B9A5F4; }
+.v5-app .cursor-dot { background:#F5F5F5; }
+.v5-app .cursor-ring { border-color:rgba(185,165,244,.65); }
+.v5-app .cursor-ring--active { background:rgba(185,165,244,.09); }
+.v5-overline,.v5-section-kicker,.v5-hero-role,.v5-label-row,.v5-section-count,.v5-category,.v5-robotics-meta,.v5-robotics-tags,.v5-software-card-top,.v5-software-card-footer>span,.v5-portrait figcaption,.v5-footer-bottom,.v5-detail-note,.v5-detail-tags,.v5-research-content h2 {
+  font-family:"IBM Plex Mono",Consolas,monospace !important;
+}
+
+/* The V4 pixel signature remains, reduced to a quiet monochrome maker's mark. */
+.v5-app .pixel-name-mark { position:absolute; top:25px; left:max(24px,calc((100vw - 1200px)/2)); z-index:1050; color:#080808; box-shadow:none; filter:none; }
+.v5-app .pixel-name-mark__strip { padding:4px 6px; }
+.v5-app .pixel-name-mark__strip--first { background:#F4F4F4; }
+.v5-app .pixel-name-mark__strip--second { background:#A9A9A9; }
+.v5-app .pixel-name-mark__letters { height:17px; }
+.v5-app .pixel-name-mark:hover .pixel-name-mark__strip--first { transform:translateX(2px); }
+.v5-app .pixel-name-mark:hover .pixel-name-mark__strip--second { transform:translateX(3px); }
+
+/* Wider, rectangular and unobtrusive top navigation; bottom dock on phones. */
+.v5-app .floating-nav.v5-nav {
+  position:fixed; top:20px; left:50%; bottom:auto; z-index:1000;
+  width:min(690px,calc(100vw - 390px)); max-width:690px; min-width:500px;
+  padding:5px; margin:0; transform:translateX(-50%);
+  border-radius:7px; border:1px solid #303034;
+  background:rgba(18,18,19,.95); backdrop-filter:blur(20px);
+  box-shadow:0 10px 35px rgba(0,0,0,.32);
+  align-items:stretch; justify-content:stretch;
+}
+.v5-app .v5-nav .floating-nav-links { width:100%; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:3px; }
+.v5-app .v5-nav .floating-nav-links a {
+  display:flex; align-items:center; justify-content:center;
+  padding:12px 9px; border-radius:4px;
+  color:#B1B1B6; font:500 12px/1.1 "Inter",sans-serif !important;
+  letter-spacing:.015em; transition:background .2s,color .2s;
+}
+.v5-app .v5-nav .floating-nav-links a:hover,.v5-app .v5-nav .floating-nav-links a:focus-visible { color:#F9F9FA; background:#242427; outline-offset:2px; }
+.v5-app .v5-nav .floating-nav-links a.is-active { color:#FAFAFA; background:#29292D; }
+
+/* Homepage inspired by the restrained typographic hierarchy of the supplied screenshot. */
+#intro.v5-intro {
+  display:block; width:100%; min-height:min(890px,100vh); margin:0; padding:166px 34px 118px;
+  background:#090909;
+}
+.v5-intro-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) 255px; gap:clamp(40px,6.5vw,100px); align-items:center; }
+.v5-intro-copy { min-width:0; }
+.v5-overline { color:#A4A4AB; font-size:12px; letter-spacing:.11em; font-weight:500; margin:0 0 40px; }
+.v5-hero-name { margin:0; font:700 clamp(51px,6vw,83px)/1.1 "Inter",Arial,sans-serif !important; letter-spacing:-.066em; color:#F9F9FA; }
+.v5-hero-typed { display:inline; }
+.v5-name-cursor { display:inline-block; color:#B9A5F4; font-weight:400; margin-left:4px; animation:v5-blink 1s steps(1) infinite; }
+@keyframes v5-blink { 0%,47%{opacity:1} 48%,100%{opacity:0} }
+.v5-hero-role { margin:39px 0 35px; font-size:12px; line-height:1.7; letter-spacing:.08em; color:#BBBBBF; }
+.v5-hero-role span { padding:0 7px; color:#B9A5F4; }
+.v5-intro-description { max-width:730px; color:#B6B6BA; font-size:16px; line-height:1.95; font-weight:400; }
+.v5-intro-description p { margin:0 0 22px; }
+.v5-intro-description strong { color:#EDEDEF; font-weight:550; }
+.v5-intro-actions { display:flex; flex-wrap:wrap; align-items:center; gap:24px; margin-top:44px; }
+.v5-contact-link,.v5-socials a { display:inline-flex; align-items:center; gap:9px; padding-bottom:4px; border-bottom:1px solid transparent; font-size:13px; font-weight:550; color:#EFEFEF; transition:color .22s,border-color .22s; }
+.v5-contact-link { border-color:#AFAFB4; }
+.v5-contact-link:hover,.v5-socials a:hover { color:#B9A5F4 !important; border-color:#B9A5F4; }
+.v5-actions-divider { width:1px; height:22px; background:#444449; }
+.v5-socials { display:flex; flex-wrap:wrap; gap:18px; }
+.v5-socials a { color:#B5B5BA; }
+.v5-socials a span { font-size:12px; opacity:.7; }
+.v5-portrait { margin:0; width:100%; align-self:center; }
+.v5-portrait-frame { width:100%; aspect-ratio:390/508; display:flex; align-items:stretch; overflow:hidden; border-radius:18px; border:1px solid #38383A; background:linear-gradient(145deg,#313137,#18181B 75%); box-shadow:0 20px 55px rgba(0,0,0,.38); }
+.v5-portrait img { display:block; width:100%; height:100%; object-fit:contain; object-position:bottom center; }
+.v5-portrait figcaption { margin-top:13px; display:flex; flex-direction:column; gap:5px; color:#E8E8E8; font-size:10px; letter-spacing:.04em; }
+.v5-portrait figcaption span { color:#929298; font-size:9px; }
+
+/* Cross-site section rhythm: quietly separated, no grid wallpaper. */
+.v5-section,.v5-research,.v5-contact { max-width:1160px; margin:0 auto; padding:86px 34px 90px; background:#090909; }
+.v5-label-row { display:flex; align-items:center; gap:24px; margin-bottom:43px; }
+.v5-section-kicker { white-space:nowrap; font-size:11px; letter-spacing:.09em; color:#B9A5F4; }
+.v5-label-rule { height:1px; flex:1; background:#272729; }
+.v5-section-header { display:flex; align-items:end; justify-content:space-between; gap:24px; margin:0 0 35px; }
+.v5-section-header h2 { margin:0 0 10px; font-size:clamp(33px,3.9vw,50px); letter-spacing:-.055em; font-weight:650; line-height:1.15; color:#F7F7F7; }
+.v5-section-header p { margin:0; color:#A5A5AC; font-size:15px; line-height:1.7; }
+.v5-section-count,.v5-header-link { font-size:11px; letter-spacing:.03em; color:#9C9CA3; }
+.v5-header-link { font-weight:550; display:inline-flex; gap:10px; white-space:nowrap; border-bottom:1px solid #4F4F54; padding-bottom:5px; transition:color .2s,border-color .2s; }
+.v5-header-link:hover { color:#B9A5F4 !important; border-color:#B9A5F4; }
+
+.v5-research { padding-top:45px; padding-bottom:65px; border-top:1px solid #272729; border-bottom:1px solid #272729; }
+.v5-research .v5-label-row { margin-bottom:28px; }
+.v5-research-content { display:flex; gap:34px; align-items:baseline; }
+.v5-research-content h2 { margin:0; white-space:nowrap; font-size:13px; color:#FAFAFC; font-weight:500; }
+.v5-research-list { display:flex; flex-wrap:nowrap; gap:10px; align-items:baseline; margin:0; line-height:2; color:#BFBFC4; font-size:14px; }
+.v5-research-dot { color:#7D6DAA; }
+
+/* Two only: robotics video projects at the top of the work section. */
+.v5-robotics { padding-bottom:42px; }
+.v5-robotics-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:23px; }
+.v5-robotics-card { min-width:0; background:#101011; border:1px solid #29292D; border-radius:10px; overflow:hidden; transition:border-color .25s,transform .25s; position:relative; }
+.v5-robotics-card:hover { border-color:#515058; transform:translateY(-3px); }
+.v5-robotics-media { width:100%; aspect-ratio:16/10; background:#050505; display:block; overflow:hidden; border-bottom:1px solid #2B2B2E; }
+.v5-robotics-media .project-media { border-radius:0; width:100%; height:100%; aspect-ratio:auto; background:#060606; }
+.v5-robotics-card-content { padding:24px 26px 25px; }
+.v5-robotics-meta { display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; color:#ABABB2; font-size:10px; letter-spacing:.04em; }
+.v5-robotics-meta span:last-child { color:#B9A5F4; }
+.v5-robotics-card h3 { margin:18px 0 10px; color:#F4F4F5; font-size:25px; font-weight:620; line-height:1.25; letter-spacing:-.035em; }
+.v5-robotics-card p { margin:0; min-height:60px; color:#ACACB1; font-size:14px; line-height:1.75; }
+.v5-robotics-tags { color:#8C8C92; font-size:10px; line-height:1.9; letter-spacing:.015em; margin:14px 0 21px; }
+.v5-robotics-links { border-top:1px solid #2B2B30; padding-top:18px; display:flex; gap:26px; }
+.v5-robotics-links a { font-size:12px; color:#D7D7DD; font-weight:600; }
+.v5-robotics-links a:hover { color:#B9A5F4 !important; }
+.v5-robotics-links a span { margin-left:3px; }
+.v5-robot-studio { display:flex; justify-content:space-between; align-items:center; gap:30px; border-top:1px solid #2A2A2D; margin-top:68px; padding:28px 38px 16px; background:linear-gradient(120deg,#101011,#0B0B0B); border-radius:8px; min-height:242px; }
+.v5-robot-studio-text { max-width:550px; }
+.v5-robot-studio-text h3 { margin:17px 0 10px; color:#F4F4F5; font-size:25px; letter-spacing:-.035em; font-weight:600; }
+.v5-robot-studio-text p { margin:0; color:#A8A8AE; font-size:14px; line-height:1.8; }
+.v5-robot-studio-art { width:220px; min-width:160px; height:218px; display:flex; align-items:flex-end; justify-content:center; }
+.v5-robot-studio-art .hero-bot { width:100%; height:210px; }
+.v5-robot-studio-art .robot-hero .bot3d { --u:1px; height:226px; }
+.v5-robot-studio-art .robot-hero .b3-shadow { bottom:7px; }
+
+/* Software projects: 7 clean two-column story cards with categories. */
+.v5-software { border-top:1px solid #262629; padding-top:90px; }
+.v5-software-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.v5-software-card { min-width:0; padding:26px 28px 24px; border:1px solid #29292E; border-radius:8px; background:#111112; display:flex; flex-direction:column; min-height:231px; transition:background .25s,border-color .25s,transform .25s; }
+.v5-software-card:hover { background:#18181A; border-color:#505057; transform:translateY(-2px); }
+.v5-software-card-top { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; color:#75757D; font-size:10px; letter-spacing:.035em; }
+.v5-software-card-top .v5-category { color:#B9A5F4; font-size:10px; text-align:right; }
+.v5-software-card h3 { margin:24px 0 10px; color:#F7F7F7; font-size:22px; font-weight:650; letter-spacing:-.036em; }
+.v5-software-card p { color:#A5A5AA; font-size:13px; line-height:1.8; margin:0 0 27px; max-width:480px; }
+.v5-software-card-footer { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding-top:14px; border-top:1px solid #2B2B2F; margin-top:auto; }
+.v5-software-card-footer > span { color:#888890; font-size:10px; line-height:1.7; }
+.v5-software-card-links { display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:16px; }
+.v5-software-card-footer a { color:#DDDDDF; font-size:11px; white-space:nowrap; font-weight:600; }
+.v5-software-card-footer a:hover { color:#B9A5F4 !important; }
+.v5-software-card:last-child { grid-column:1/-1; }
+.v5-software-card:last-child p { max-width:700px; }
+
+/* Contact and closing credits */
+.v5-contact { border-top:1px solid #29292D; padding-top:72px; padding-bottom:32px; }
+.v5-contact-content { display:flex; justify-content:space-between; gap:36px; align-items:center; padding:4px 0 110px; }
+.v5-contact-content h2 { font-size:clamp(33px,4.8vw,54px); letter-spacing:-.058em; line-height:1.2; font-weight:650; margin:0 0 15px; max-width:620px; }
+.v5-contact-content p { font-size:14px; line-height:1.9; margin:0; color:#A5A5AA; max-width:540px; }
+.v5-email-link { display:inline-flex; gap:18px; border-bottom:1px solid #F0F0F2; color:#F5F5F7; padding-bottom:9px; white-space:nowrap; font-size:15px; font-weight:600; }
+.v5-email-link:hover { color:#B9A5F4 !important; border-color:#B9A5F4; }
+.v5-footer-bottom { border-top:1px solid #252529; padding:24px 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; font-size:10px; color:#898990; }
+.v5-footer-bottom>div { display:flex; gap:16px; }
+.v5-footer-bottom a { color:#B7B7BD; }
+.v5-footer-bottom a:hover { color:#fff !important; }
+
+/* Dedicated robotics project pages */
+.v5-detail-page { max-width:940px; padding:165px 32px 100px; margin:0 auto; }
+.v5-detail-page .v5-detail-back { display:inline-block; margin-bottom:45px; font-size:13px; color:#C4C4CC; border-bottom:1px solid #414148; padding-bottom:4px; }
+.v5-detail-page h1 { margin:12px 0 18px; font-size:clamp(43px,6vw,68px); letter-spacing:-.06em; font-weight:670; }
+.v5-detail-summary { color:#B4B4BA; max-width:720px; font-size:17px; line-height:1.8; margin-bottom:32px; }
+.v5-detail-media { border:1px solid #303036; border-radius:11px; overflow:hidden; background:#0A0A0A; }
+.v5-detail-media .project-media { background:#0A0A0A; border-radius:0; }
+.v5-detail-media video { max-height:65vh; }
+.v5-detail-note { margin:13px 0 52px; font-size:11px; color:#9999A2; }
+.v5-detail-page h2 { margin:0 0 22px; font-size:24px; }
+.v5-detail-page ul { padding-left:24px; color:#B7B7BC; line-height:2.1; margin:0 0 25px; }
+.v5-detail-tags { color:#B9A5F4; font-size:12px; margin-bottom:30px; }
+
+/* Video controls are muted play/pause and a case-study scrubber; no sound toggle. */
+.v5-app .project-media { background:#0B0B0D; }
+.v5-app .project-media__label { border-color:#44444B; color:#DDDDE0; background:rgba(16,16,18,.86); }
+.v5-app .project-media__live-dot { background:#B9A5F4; box-shadow:0 0 8px rgba(185,165,244,.45); }
+.v5-app .project-media__controls button { background:rgba(14,14,15,.9); border-color:#44444A; border-radius:6px; }
+.v5-app .project-media__controls button:hover { background:#29292E; border-color:#B9A5F4; }
+
+@media(max-width:1100px) {
+  .v5-app .pixel-name-mark { left:25px; }
+  #intro.v5-intro { padding-top:175px; }
+  .v5-intro-grid { grid-template-columns:minmax(0,1fr) 210px; gap:48px; }
+  .v5-hero-name { font-size:clamp(48px,5.8vw,72px); }
+  .v5-robotics-grid { gap:15px; }
+  .v5-app .floating-nav.v5-nav { width:560px; min-width:0; }
+}
+@media(max-width:870px) {
+  .v5-app .floating-nav.v5-nav { top:auto; bottom:12px; left:50%; width:min(650px,calc(100vw - 24px)); max-width:calc(100vw - 24px); padding:5px; }
+  .v5-app .v5-nav .floating-nav-links a { padding:12px 5px; }
+  #intro.v5-intro { min-height:auto; padding:148px 32px 100px; }
+  .v5-intro-grid { grid-template-columns:minmax(0,1fr) 180px; gap:35px; }
+  .v5-intro-description { font-size:14px; }
+  .v5-hero-name { font-size:clamp(43px,5.6vw,58px); }
+  .v5-hero-role { font-size:10px; margin-top:24px; }
+  .v5-portrait figcaption span { font-size:8px; }
+  .v5-section,.v5-research,.v5-contact { padding-left:32px; padding-right:32px; }
+  .v5-robot-studio-art { width:165px; }
+}
+@media(max-width:680px) {
+  .v5-app .pixel-name-mark { top:19px; left:22px; }
+  .v5-app .pixel-name-mark__letters { height:16px; }
+  #intro.v5-intro { padding:126px 23px 90px; }
+  .v5-intro-grid { display:flex; flex-direction:column-reverse; align-items:flex-start; gap:42px; }
+  .v5-portrait { width:185px; align-self:flex-start; }
+  .v5-portrait figcaption { font-size:9px; }
+  .v5-hero-name { font-size:clamp(42px,10vw,64px); }
+  .v5-overline { margin-bottom:20px; }
+  .v5-hero-role { margin:24px 0 26px; line-height:2; }
+  .v5-intro-description { font-size:14px; line-height:1.85; }
+  .v5-intro-description p { margin-bottom:17px; }
+  .v5-intro-actions { gap:18px; margin-top:32px; }
+  .v5-socials { gap:17px; }
+  .v5-section,.v5-research,.v5-contact { padding:65px 22px 65px; }
+  .v5-research { padding-top:39px; padding-bottom:45px; }
+  .v5-label-row { margin-bottom:26px; }
+  .v5-research-content { flex-direction:column; gap:14px; }
+  .v5-research-list { font-size:13px; gap:8px; flex-wrap:wrap; }
+  .v5-robotics-grid,.v5-software-grid { grid-template-columns:1fr; gap:18px; }
+  .v5-software-card:last-child { grid-column:auto; }
+  .v5-section-header { flex-direction:column; align-items:flex-start; margin-bottom:25px; }
+  .v5-section-header h2 { font-size:35px; }
+  .v5-robotics-card-content { padding:23px; }
+  .v5-robotics-card h3 { font-size:23px; }
+  .v5-robotics-card p { min-height:unset; }
+  .v5-robot-studio { margin-top:38px; padding:30px 20px 10px; flex-direction:column; align-items:flex-start; gap:5px; }
+  .v5-robot-studio-art { align-self:center; height:218px; }
+  .v5-software-card { min-height:215px; padding:23px; }
+  .v5-contact-content { flex-direction:column; align-items:flex-start; gap:32px; padding-bottom:70px; }
+  .v5-footer-bottom { padding-bottom:80px; }
+  .v5-detail-page { padding:122px 20px 90px; }
+}
+@media(max-width:390px){ .v5-app .v5-nav .floating-nav-links a { font-size:10px !important; padding:11px 2px; } .v5-hero-name { font-size:40px; } .v5-hero-role { font-size:9px; } .v5-actions-divider { display:none; } }
+@media(prefers-reduced-motion:reduce){ html { scroll-behavior:auto; } .v5-name-cursor{animation:none} .v5-software-card,.v5-robotics-card{transition:none; transform:none!important} .v5-app .v5-nav .floating-nav-links a{transition:none} }

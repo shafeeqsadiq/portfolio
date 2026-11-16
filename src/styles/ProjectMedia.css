@@ -1,0 +1,153 @@
+/* V4 — consistent crop-free project media. Do not inherit the old carousel image opacity. */
+.project-media {
+  position: relative;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #0A1213;
+  isolation: isolate;
+  border-radius: 14px;
+}
+.project-media--featured { aspect-ratio: 16 / 9; border-radius: 19px 19px 0 0; }
+.project-media--mobile { aspect-ratio: 16 / 9; border-radius: 12px; }
+.project-media--card { aspect-ratio: 16 / 10; border-radius: 14px 14px 0 0; }
+.project-media--detail { border-radius: 16px; }
+.project-media--detail.project-media--video { aspect-ratio: auto; }
+
+.project-media__asset,
+.carousel .project-media__asset,
+.project-media img,
+.project-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  object-fit: contain;
+  object-position: center;
+  opacity: 1;
+  filter: none;
+}
+.project-media--detail .project-media__asset { height: auto; max-height: 75vh; }
+.project-media__label {
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
+  border: 1px solid rgba(242, 229, 210, .18);
+  border-radius: 999px;
+  background: rgba(9, 18, 19, .82);
+  color: #E7EADF;
+  font: 600 11px/1.2 system-ui, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+}
+.project-media__live-dot { width: 6px; height: 6px; border-radius: 50%; background: #F0B56F; box-shadow: 0 0 9px rgba(240,181,111,.65); }
+.project-media__controls {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 3;
+  display: flex;
+  gap: 7px;
+}
+.project-media__controls button {
+  min-width: 43px;
+  min-height: 38px;
+  border-radius: 11px;
+  padding: 0 12px;
+  border: 1px solid rgba(242, 229, 210, .24);
+  background: rgba(9, 18, 19, .9);
+  color: #F5F0E7;
+  font: 600 12px/1 system-ui, sans-serif;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: background 180ms ease, border-color 180ms ease;
+}
+.project-media__controls button:hover { background: rgba(34, 49, 49, .98); border-color: #F0B56F; }
+.project-media__controls button:focus-visible { outline: 2px solid #F0B56F; outline-offset: 3px; }
+.project-media--card .project-media__label { top: 10px; left: 10px; padding: 6px 9px; font-size: 9px; }
+.project-media--card .project-media__controls { bottom: 9px; right: 9px; gap: 4px; }
+.project-media--card .project-media__controls button { min-height: 31px; min-width: 35px; padding: 0 8px; font-size: 11px; border-radius: 8px; }
+@media (max-width: 600px) {
+  .project-media__label { top: 10px; left: 10px; font-size: 9px; }
+  .project-media__controls { bottom: 9px; right: 9px; }
+  .project-media__controls button { min-height: 34px; padding: 0 9px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-media__controls button { transition: none; }
+}
+
+/* V10 — layered local thumbnail and completely silent custom player.
+   A real project screenshot is always present below the video: no broken icon. */
+.project-media__still, .project-media__video, .project-media__unavailable {
+  grid-area: 1 / 1;
+}
+.project-media__still { z-index: 0; }
+.project-media__video {
+  z-index: 1;
+  opacity: 0 !important;
+  visibility: hidden;
+}
+.project-media__video.is-ready {
+  opacity: 1 !important;
+  visibility: visible;
+}
+.project-media__unavailable {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  padding: 24px;
+  color: #aaa7b4;
+  font: 500 13px/1.5 "IBM Plex Mono", monospace;
+  text-align: center;
+}
+.project-media__controls--detail {
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 12px;
+  background: rgba(11,11,13,.9);
+  border: 1px solid #46444b;
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+}
+.project-media__seek {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+  accent-color: #b9a5f4;
+}
+.project-media__time {
+  white-space: nowrap;
+  color: #e5e0ec;
+  font: 500 11px/1 "IBM Plex Mono", monospace;
+  font-variant-numeric: tabular-nums;
+}
+.project-media__fallback-label {
+  position: absolute;
+  bottom: 11px;
+  left: 12px;
+  z-index: 2;
+  padding: 6px 9px;
+  color: #ddd8e8;
+  background: rgba(10,10,12,.88);
+  border-radius: 5px;
+  font: 500 10px/1.4 "IBM Plex Mono", monospace;
+}
+.project-media--detail .project-media__still,
+.project-media--detail .project-media__video { max-height: 75vh; }
+@media (max-width: 600px) {
+  .project-media__controls--detail { left: 8px; right: 8px; bottom: 8px; padding: 5px 7px; gap: 7px; }
+  .project-media__time { font-size: 9px; }
+}
