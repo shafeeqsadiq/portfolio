@@ -3,7 +3,7 @@ import RobotHero from "./RobotHero";
 
 const categories = [
   { name: "Languages", skills: ["Python", "C++", "MATLAB", "JavaScript", "TypeScript", "SQL"] },
-  { name: "Robotics & AI", skills: ["ROS 2", "MoveIt 2", "Gazebo", "OpenCV", "PyTorch", "SLAM", "Computer Vision", "Robot Learning"] },
+  { name: "Robotics & AI", skills: ["ROS 2", "MoveIt 2", "Gazebo", "MuJoCo", "OpenCV", "PyTorch", "CUDA Graphs", "SLAM", "Computer Vision", "Robot Learning"] },
   { name: "Applications & Web", skills: ["React", "React Native", "Expo", "Node.js", "Express", "Flask", "WebSockets", "Leaflet", "Chart.js"] },
 ];
 
@@ -15,12 +15,12 @@ export default function TechnicalSkills() {
         <div className="v6v2-skills-left">
           <header className="v6v2-skills-heading">
             <h2 id="skills-heading">Technical skills<span className="v6-period">.</span></h2>
-            <p>Tools and technologies used in my projects.</p>
+            <p>The tools and technologies I use in my projects.</p>
           </header>
           <div className="v6-skills-list">
             {categories.map((cat, i) => (
               <div className="v6-skill-row" key={cat.name}>
-                <div className="v6-skill-label"><span>{String(i + 1).padStart(2, "0")}</span><h3>{cat.name}</h3></div>
+                <div className="v6-skill-label"><span>{String(i+1).padStart(2, "0")}</span><h3>{cat.name}</h3></div>
                 <div className="v6-skill-tags">{cat.skills.map(skill => <span className="v6-skill-pill" key={skill}>{skill}</span>)}</div>
               </div>
             ))}
